@@ -1,0 +1,24 @@
+<div class="card mx-auto mt-4" style="width: 18rem;">
+    <div class="card-body">
+        <button [hidden]= "deleted" class="float-right fa fa-trash-o mt-1 mr-1" (click)="removeItem()"></button>
+    </div>
+    <img class="card-img-top mx-auto" src={{picture}} style="width: 90%; height: 80%;">
+    <div class="card-body mb-2">
+        <h5 class="card-title text-center">{{name}}</h5>
+        <h6 class="card-subtitle text-center text-muted">{{sku}}</h6>
+        <p class="card-title ml-2">{{description}}</p>
+    </div>
+    <div class="card-body">
+        <p class="card-title text-right mr-1 mb-1">
+            <strong>{{'Price'}}</strong>&nbsp;{{price}}
+        </p>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+            <p class="text ml-2 m2-1">{{getComments()}}</p>
+        </li>
+    </ul>
+    <div class="card-body mb-2" [hidden]="!deleted" >
+        <p class="card-text text-danger text-center ml- nb-1">This item has been removed.</p>
+    </div>
+</div>

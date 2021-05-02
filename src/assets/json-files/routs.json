@@ -1,0 +1,15 @@
+{
+
+"/items/search?startFrom=:startFrom&pageSize=:pageSize&itemName=:keyword&categoryId=:categoryId":
+    "/items?q=:keyword&category=:categoryId&_page=:startFrom&_limit=:pageSize",
+"/items/search?startFrom=:startFrom&pageSize=:pageSize&itemName=:keyword":
+    "/items?q=:keyword&_page=:startFrom&_limit=:pageSize",
+"/items/search?startFrom=:startFrom&pageSize=:pageSize&categoryId=:categoryId":
+    "/items?category=:categoryId&_page=:startFrom&_limit=:pageSize",
+"/items/search\\?categoryId=:categoryId":
+    "/items?category=:categoryId",
+"/items/search?startFrom=:startFrom&pageSize=:pageSize":
+    "/items?_page=:startFrom&_limit=:pageSize",
+"/category/:categoryld":
+   "/categories/:categoryId"
+}

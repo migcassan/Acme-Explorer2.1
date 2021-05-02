@@ -1,0 +1,74 @@
+{
+  "actors": [
+    {
+      "id": "rz2ZUtJ",
+      "name": "Marina",
+      "surname": "Santos Iglesias",
+      "email": "marina.santos@gmail.com",
+      "password": "#aDsR1745",
+      "phone": "673454790",
+      "address": "C/ Miguel Angel nº 2",
+      "preferredLanguage": "en",
+      "photo": "",
+      "picture": "",
+      "role": "Administrator"
+    },
+    {
+      "id": "rz2ZUtJ",
+      "name": "Marina",
+      "surname": "Santos Iglesias",
+      "email": "marina.santos@gmail.com",
+      "password": "#aDsR1745",
+      "phone": "673454790",
+      "address": "C/ Miguel Angel nº 2",
+      "preferredLanguage": "en",
+      "photo": "",
+      "picture": "",
+      "role": "Administrator"
+    },
+    {
+      "name": "Miguel Alberto",
+      "surname": "Castle",
+      "password": "prepago*91",
+      "email": "raul.pe.0606@gmail.com",
+      "phone": "8095554746",
+      "address": "C/ Acme ",
+      "role": "ADMINISTRATOR",
+      "preferredLanguage": "en",
+      "id": "Kq6wpYX"
+    },
+    {
+      "name": "Juan",
+      "surname": "Garcia",
+      "password": "1234567",
+      "email": "jgarcia@gmail.com",
+      "phone": "80957444",
+      "address": "C/ Acme ",
+      "role": "CLECK",
+      "preferredLanguage": "es",
+      "id": "VvFCgRh"
+    },
+    {
+      "name": "PEPE",
+      "surname": "Garcia",
+      "password": "123456",
+      "email": "Sanciona@gmail.com",
+      "phone": "808795554746",
+      "address": "C/ Acme ",
+      "role": "ADMINISTRATOR",
+      "preferredLanguage": "en",
+      "id": "m29Kflq"
+    },
+    {
+      "name": "Prueba",
+      "surname": "Test",
+      "password": "123456",
+      "email": "pruebatest@gmail.com",
+      "phone": "5268745697",
+      "address": "C/ Acme test",
+      "role": "CLERK",
+      "preferredLanguage": "en",
+      "id": "o-lrMfR"
+    }
+  ]
+}

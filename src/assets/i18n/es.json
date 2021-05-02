@@ -1,0 +1,165 @@
+{
+    
+    "home": {
+        "h1": "Bienvenido a",
+        "h2": "Acme Explorer"
+    },
+
+    "administrator": {
+        "administrator": "Administrador",
+        "dashboard" : "Mostrar panel de control",
+        "warehouse" : "Configurar almacén",
+        "mcap": "Mostrar cubo MCAP",
+        "title": "ADMINISTRACIÓN"
+    },
+
+    "actor" : {
+   
+       "email": "Correo",
+       "password": "Contraseña",
+       "name": "Nombre",
+       "surname": "Apellido",
+       "phone":  "Teléfono",
+       "address": "Dirección",
+       "role": "Rol",
+       "select.role": "Por favor selecciona un rol",
+       "register": "Registrar",
+       "create.pass": "Crear contraseña",
+       "repeat.pass": "Repetir contraseña",
+       "create.account": "Crear Cuenta",
+       "password.required": "Obligatorio. Debe contener mayucula",
+       "PreferredLanguage": "Idioma",
+       "register.user": "Registrar Nuevo Usuario"
+    },
+   
+    "security": {
+        "login": "Entrar",
+        "logout": "Salir",
+        "signin.title": "Entra Aqui"
+    },
+
+    "footer": {
+       "terms": "Términos y condiciones",
+       "visitors": "Visitantes",
+       "about": "A cerca de ",
+       "about.content": "Sobre la empresa",
+       "contact": "CONTACTO",
+        "social.networks": "Conéctate con nosotros en las redes sociales!",
+        "empresa": "Un servicio integral a medida ofrecido por profesionales experimientados con un largo recorrido en el sector turístico.",
+        "information": "INFORMACIÓN"
+   },
+
+   "category": {
+       "list": "Listar categorias",
+       "create": "Crear nueva categoria"
+   },
+   
+   "order" :{
+        "list-mine": "Listar mis pedidos"
+   },
+   
+
+   
+   "messages": {
+       "auth.registration.correct": "El usuario {{username}} ha sido registrado correctamente",
+       "auth.logout": "El usuario se ha desconectado correctamente",
+       "auth.login.correct": "El usuario ha entrado correctamente",
+       "already.registered": "¿Ya está registrado?",
+       "item.deleted": "Item eliminado correctamente",
+       "back": "Atrás",
+       "save": "Guardar",
+       "cancel": "Cancelar",
+       "delete": "Eliminar",
+       "placeHolder": "Entrar"
+   
+   },
+   
+   "errorMessages": {
+       "auth.user.not.found": "No existe un registro asociado a estos datos. El usuario puede haber sido borrado.",
+       "auth.wrong.password": "La contraseña es inválida o el usuario no tiene contraseña.",
+       "auth.argument.error": "Fallo en el login: el campo 'Correo Electrónico' debe ser una cadena válida.",
+       "auth.invalid.email": "La dirección de correo no tiene un formato correcto.",
+       "auth.weak.password": "La contraseña debería tener al menos 6 caracteres.",
+       "auth.registration.failed": "Fallo en el registro.",
+       "auth.logout.failed": "Fallo en la desconexión.",
+       "denied.access.title": "Acceso denegado.",
+       "denied.access.message": "No tiene permiso para acceder a {{resource}} en este servidor.",
+       "add.category.failed": "Fallo al agregar categoría.",
+       "no.items.found": "No se encontraron productos en la categoría seleccionada."
+   },
+   
+   "trip":{
+    "search": "Buscar",
+    "trips": "Viajes",
+    "list": "Listar viajes",
+    "create": "Crear viajes",
+    "load": "Cargar viajes",
+    "title": "VIAJES",
+    "ticker": "Ticker",
+    "cancelled_reason": "Razon cancelado",
+    "cancelationMoment": "Fecha cancelado",
+    "description": "Descripcion",
+    "price": "Precio",
+    "list_requirements": "Mostrar requerimientos",
+    "status": "Status",
+    "date_start": "Fecha incio",
+    "date_end": "Fecha finalizacion",
+    "published": "Publicado",
+    "created": "Creado",
+    "details": "Detalles",
+    "picture": "Fotos",
+    "name": "Nombre",
+    "category": "Categoria"
+}, 
+   "application":{
+    "title": "APLICACIONES",
+    "list-mine": "Listar mis aplicaciones",
+    "list-unassigned": "Listar aplicaciones no-asignadas",
+    "list-self-assigned": "Listar aplicaciones auto-asignadas",
+    "list-pending": "Listar aplicaciones pendientes",
+    "list-rejected": "Listar aplicaciones rechazadas",
+    "list-due": "Listar aplicacion en espera de pago",
+    "list-accepted": "Listar aplicaciones aceptadas",
+    "list-cancelled": "Listar aplicaciones canceladas"
+},
+
+    "profile": {
+        "profile": "Perfil",
+        "edit": "Editar perfil",
+        "title": "PERFIL"
+    },
+
+    "clerk":{
+        "list": "Listar Empleados"
+    },
+
+    "denied-access-page": {
+        "title": "Acceso denegado",
+        "message-start": "No tiene permisos para acceder a",
+        "message-end": "en este servidor"
+    },
+    
+    "header": {
+        "search": "Buscar",
+        "trips": "VIAJES",
+        "list.trips": "Listar Viajes",
+        "display.trip": "Desplegar Viaje",
+        "profile": "PERFIL",
+        "edit.profile": "Editar Perfil",
+        "applications": "APLICACIONES",
+        "list.applications": "Listar Aplicaciones",
+        "display.application": "Desplegar Aplicación",
+        "administration": "ADMINISTRACIÓN",
+        "dashboard": "Desplegar dashboard",
+        "warehouse": "Configurar warehouse"
+    },
+    
+    "comment":{
+        "title": "Title"
+    },
+    "back":{
+        "back":"Atras"
+    }
+    
+
+}

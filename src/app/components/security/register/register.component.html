@@ -1,0 +1,171 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Standard Meta -->
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+</head>
+<body>
+<div class="container">
+    <form class="form-horizontal" [formGroup]= "registerForm" (ngSubmit)="onRegister()" >
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <br>
+                <hr>
+                <h2>{{'actor.register.user' | translate }}</h2>
+                <hr>
+            </div>
+		</div>
+        <div class="row">
+            <div class="col-md-3 field-label-responsive">
+                <label for="name">{{'actor.role' | translate }}:</label>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
+                        <select id="role"  class="form-control" 
+							   formControlName = "role">
+							<option
+								*ngFor = "let role of roleList" [value] ="role">
+								{{role}}
+							</option>   
+						</select>		   	   
+					</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-control-feedback">
+                        <span class="text-danger align-middle">
+                                {{'actor.select.role' | translate }}
+                        </span>
+                </div>
+            </div>
+		</div>
+        <div class="row">
+            <div class="col-md-3 field-label-responsive">
+                <label for="name">{{'actor.name' | translate }}:</label>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon" style="width: 2.6rem"></div>
+                        <input id="name" type="text"  class="form-control"
+							   formControlName = "name">	   
+					    </div>
+                </div>
+            </div>
+		</div>
+		<div class="row">
+            <div class="col-md-3 field-label-responsive">
+                <label for="name">{{'actor.surname' | translate }}:</label>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon" style="width: 2.6rem"></div>
+                        <input id="surname" type="text"  class="form-control" 
+							   formControlName = "surname">	   
+					    </div>
+                </div>
+            </div>
+		</div>
+		<div class="row">
+            <div class="col-md-3 field-label-responsive">
+                <label for="name">{{'actor.phone' | translate }}:</label>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon" style="width: 2.6rem"></div>
+                        <input id="phone" type="text"  class="form-control" 
+							   formControlName = "phone">	   
+					    </div>
+                </div>
+            </div>
+		</div>
+		<div class="row">
+            <div class="col-md-3 field-label-responsive">
+                <label for="name">{{'actor.email' | translate }}:</label>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon" style="width: 2.6rem"></div>
+                        <input id="email" type="text"  class="form-control" 
+							   formControlName = "email">	   
+					    </div>
+                </div>
+            </div>
+		</div>
+		<div class="row">
+            <div class="col-md-3 field-label-responsive">
+                <label for="name">{{'actor.password' | translate }}:</label>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon" style="width: 2.6rem"></div>
+                        <input id="password" type="password"  class="form-control" 
+							   formControlName = "password">	   
+					    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-control-feedback">
+                        <span class="text-danger align-center">
+                            {{'actor.password.required' | translate }}
+                        </span>
+                </div>
+            </div>
+		</div>
+		<div class="row">
+            <div class="col-md-3 field-label-responsive">
+                <label for="name">{{'actor.address' | translate }}:</label>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon" style="width: 2.6rem"></div>
+                        <input id="address" type="text"  class="form-control" 
+							   formControlName = "address">	   
+					    </div>
+                </div>
+            </div>
+        </div>  
+        <div class="row">
+             <div class="col-md-3 field-label-responsive">
+                 <label for="name">{{'actor.PreferredLanguage' | translate }}:</label>
+            </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                    <div class="input-group-addon" style="width: 2.6rem"></div>
+                    <select id="preferredLanguage"  class="form-control" 
+                           formControlName = "preferredLanguage">
+                        <option
+                            *ngFor = "let lang of langList" [value] ="lang">
+                            {{lang}}
+                        </option>   
+                    </select>		   	   
+                </div>
+            </div>
+        </div>
+    </div>
+        <button type="submit" class="btn btn-primary">
+                {{'actor.register' | translate }}
+        </button>
+    </form>
+</div>
+</body>
+<br/><br/><br/>

@@ -1,0 +1,164 @@
+{    
+    "home": {
+        "h1": "Bienvenido a",
+        "h2": "Acme Explorer"
+    },
+
+    "administrator": {
+        "administrator": "Administrator",
+        "dashboard" : "Display dashboard",
+        "warehouse" : "Configure warehouse",
+        "mcap": "Display MCAP cube",
+        "title": "ADMINISTRATION"
+    },
+      
+    "actor" : {
+   
+       "name": "Name",
+       "surname": "Surname",
+       "email": "Email",
+       "password": "Password",    
+       "phone":  "Phone",
+       "address": "Address",
+       "role": "Role",
+       "select.role": " Please select a role",
+       "register": "Register",
+       "update": "Update",
+       "create.pass": "Create password",
+       "repeat.pass": "Repeat password",
+       "create.account": "Create Account",
+       "password.required": "Required. Should contain upper letter",
+       "PreferredLanguage": "Preferred Language",
+       "register.user": "Register New User"
+    },
+   
+    "security": {
+        "login": "Login",
+        "logout": "Logout",
+        "signin.title": "Sign-in Here"
+    },
+   
+    "footer": {
+       "terms": "Terms and conditions",
+       "visitors": "Visitors",
+       "about": "About",
+       "about.content": "About us",
+       "contact":"CONTACT",
+       "social.networks": "Get connected with us on social networks!",
+       "empresa": "A comprehensive custom service offered by experienced professionals with a long career in the tourism sector.",
+       "information": "INFORMATION"
+   },
+   
+   "category": {
+       "list": "List categories",
+       "create": "Create new category"
+   },
+   
+   "order" :{
+       "list-mine": "List my trips"
+   },
+   
+ 
+   
+   "messages": {
+       "auth.registration.correct": "The user {{username}} has been correctly registered",
+       "auth.logout": "The user has logged out from the app",
+       "auth.login.correct": "The user has been correctly logged in",
+       "already.registered": "Already registered?",
+       "item.deleted": "Item successfully deleted",
+       "back": "Back",
+       "save": "Save",
+       "cancel": "Cancel",
+       "delete": "Delete",
+       "placeHolder": "Enter"
+   
+   },
+   
+   "errorMessages": {
+       "auth.user.not.found": "There is no user record corresponding to this identifier. The user may have been deleted.",
+       "auth.wrong.password": "The password is invalid or the user does not have a password.",
+       "auth.argument.error": "signInWithEmailAndPassword failed: First argument 'email' must be a valid string.",
+       "auth.invalid.email": "The email address is badly formatted.",
+       "auth.weak.password": "Password should be at least 6 characters long.",
+       "auth.registration.failed": "Registration failed.",
+       "auth.logout.failed": "Logout failed.",
+       "denied.access.title": "Denied access.",
+       "denied.access.message": "You don't have permission to access {{resource}} on this server.",
+       "add.category.failed": "Category could not be added.",
+       "no.items.found": "No items found for this category."
+   },
+   "trip":{
+        "search": "Search",
+        "trips": "Trips",
+        "list": "List trips",
+        "create": "Create trips",
+        "load": "Load trips",
+        "title": "TRIPS",
+        "ticker": "Ticker",
+        "cancelled_reason": "Cancelled_reason",
+        "cancelationMoment": "Cancelation Moment",
+        "description": "Description",
+        "price": "Price",
+        "list_requirements": "List_Requirements",
+        "status": "Status",
+        "date_start": "Date of Start",
+        "date_end": "Date of End",
+        "published": "Published",
+        "created": "Created",
+        "details": "Details",
+        "picture": "Picture",
+        "name": "Name",
+        "Category": "Category"
+   },
+   
+   "application":{
+       "title": "APPLICATIONS",
+       "list-mine": "List my applications",
+       "list-unassigned": "List unassigned applications",
+       "list-self-assigned": "List self-assigned applications",
+       "list-pending": "List pending applications",
+       "list-rejected": "List rejected applications",
+       "list-due": "List due applications",
+       "list-accepted": "List accepted applications",
+       "list-cancelled": "List cancelled applications"
+   },
+
+   "profile":{
+        "profile": "Profile",
+        "edit": "Edit profile",
+        "title": "PROFILE"
+    },
+
+    "clerk":{
+        "list": "List clerks"
+    },
+
+    "denied-access-page": {
+        "title": "Denied access",
+        "message-start": "You don't have permission to access",
+        "message-end": "on this server"
+    },
+
+    "header":{
+        "search": "Search",
+        "trips": "TRIPS",
+        "list.trips": "List Trips",
+        "display.trip": "Display Trips",
+        "profile": "PROFILE",
+        "edit.profile": "Edit Profile",
+        "applications": "APPLICATIONS",
+        "list.applications": "List Applications",
+        "display.application": "Display Applications",
+        "administration": "ADMINISTRATION",
+        "dashboard": "Display dashboard",
+        "warehouse": "Configure warehouse"
+    },
+    "comment":{
+        "title": "Title"
+    },
+    "back":{
+        "back":"Back"
+    }
+    
+        
+}

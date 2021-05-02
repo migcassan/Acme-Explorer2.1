@@ -1,0 +1,36 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+  <form class="form-horizontal" (ngSubmit)="onLogin(f)" #f="ngForm" >
+      <div class="login-wrap">
+          <div class="login-html">
+            <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">{{'security.signin.title' | translate }}:</label>
+            <input id="tab-2" type="radio" name="tab" class="for-pwd"><label for="tab-2" class="tab"></label>
+            <div class="login-form">
+              <div class="sign-in-htm">
+                <div class="group">
+                  <label class="label" for="email">{{'actor.email' | translate }}:</label>
+                  <input id="email" type="email" class="input" name="email" ngModel>
+                </div>
+                <div class="group">
+                  <label for="password" class="label">{{'actor.password' | translate }}:</label>
+                  <input id="password" type="password" class="input" data-type="password" name="password" ngModel>
+                </div>
+                <div class="group">
+                  <button type="submit" class="button" >{{'security.login'|translate}}</button>
+                </div>
+                <div class="hr"></div>
+              </div>
+              <div class="for-pwd-htm">
+                <div class="group">
+                  <button type="submit" class="button">{{'security.login'|translate}} </button>
+                </div>
+                <div class="hr"></div>
+              </div>
+            </div>
+          </div>
+        </div>    
+  </form>
+  <br/><br/> <br/>
