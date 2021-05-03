@@ -1,0 +1,20 @@
+.header {
+    background: url(../../../../assets/images/bg3.jpg) no-repeat center;
+    background-size: cover;
+    min-height: 100vh;
+    display: block
+  } 
+
+h1 {
+  text-align: center;
+  font-size: 110px;
+  color:turquoise;
+ }
+
+ 
+h2 {
+  text-align: center;
+  font-size: 80px;
+  color: wheat;
+  border-color:tomato;
+ }

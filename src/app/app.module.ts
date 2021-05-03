@@ -20,6 +20,8 @@ import { LocalizedDataPipe } from './components/shared/localized-data.pipe';
 import { registerLocaleData } from '@angular/common';
 import locales from '@angular/common/locales/es';
 import { AppRoutingModule } from './app-routing.module';
+import { HomeComponent } from './components/shared/home/home.component';
+
 
 // Initialize firebase
 export const firebaseConfig = {
@@ -41,14 +43,13 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    ItemListComponent,
-    ItemDisplayComponent,
     HeaderComponent,
     RegisterComponent,
     TranslatableComponent,
     LoginComponent,
     FooterComponent,
-    LocalizedDataPipe
+    LocalizedDataPipe,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

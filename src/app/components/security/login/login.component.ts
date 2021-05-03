@@ -16,17 +16,20 @@ export class LoginComponent extends TranslatableComponent implements OnInit {
 
   constructor(private authService: AuthService,
     private router: Router,
+    private route: ActivatedRoute,
     private translateService: TranslateService) {
       super(translateService);
   }
 
   ngOnInit() {
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/home';
   }
 
   onLogin(form: NgForm) {
     const email = form.value.email;
     const password = form.value.password;
     this.authService.login(email, password).then(_ => {
+      window.alert('User logged in sucessfully');
       form.reset();
       this.email = email;
       this.router.navigateByUrl(this.returnUrl);
@@ -34,5 +37,12 @@ export class LoginComponent extends TranslatableComponent implements OnInit {
     });
 
   }
-
+  onLogout () {
+    this.authService.logout()
+    .then(_ => {
+      this.email = null;
+    }).catch(error => {
+      console.log(error);
+    });
+  }
 }
