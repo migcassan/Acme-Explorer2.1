@@ -2,8 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { ItemListComponent } from './components/item/item-list/item-list.component';
-import { ItemDisplayComponent } from './components/item/item-display/item-display.component';
 import { HeaderComponent } from './components/master/header/header.component';
 import { RegisterComponent } from './components/security/register/register.component';
 

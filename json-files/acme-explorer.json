@@ -1,0 +1,16 @@
+{
+  "actors": [
+    
+    {
+      "name": "Prueba",
+      "surname": "Test2",
+      "password": "123456",
+      "email": "pruebatest@gmail.com",
+      "phone": "5268745697",
+      "address": "C/ Acme test",
+      "role": "CLERK",
+      "preferredLanguage": "en",
+      "id": "o-lrMfR"
+    }
+  ]
+}
