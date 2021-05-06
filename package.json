@@ -3,11 +3,12 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build --prod",
+    "start": "node server.js",
+    "build": "ng build prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "heroku-postbuild": "ng build --prod",
     "mock:server": "json-server  --watch json-files/acme-explorer.json"
   },
   "private": true,
@@ -32,6 +33,7 @@
     "fontawesome": "^4.7.0",
     "jquery": "^3.3.1",
     "ngx-bootstrap": "^3.0.1",
+    "path": "^0.12.7",
     "popper.js": "^1.14.6",
     "rxjs": "~6.2.0",
     "zone.js": "~0.8.26"
