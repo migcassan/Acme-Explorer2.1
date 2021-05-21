@@ -1,0 +1,32 @@
+<table class="table table-striped" >
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">{{'application.place'|translate}}</th>
+      <th scope="col">{{'application.requestusstatus'|translate}}</th> 
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let application of data">
+      <td >{{application.id}}</td>
+      <td >{{application.tripname}}</td>
+
+      <!-- A continuación introducimos el desplegable con las opciones que hemos definido en la variable "statusList" del componente -->
+      <td><div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fa fa-edit"></i></span>
+        </div>
+        <select id="status" name="status">
+          <option *ngFor="let status of statusList" [value]="status">{{status}}</option>
+        </select>
+        </div>
+      </td>
+      <!-- Botón "OK" que hace la llamada al método onCreated para modificar la aplicación -->
+      <a>
+        <button type="button" (click)="onCreated" class="btn-card">Ok
+        </button>
+      </a>
+      
+    </tr>
+  </tbody>
+</table>

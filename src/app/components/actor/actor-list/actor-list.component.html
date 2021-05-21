@@ -1,0 +1,23 @@
+
+<table  class="table table-striped" >
+  <thead>
+    <tr>
+      <th>{{'actor.name'|translate}}</th> 
+      <th>{{'actor.surname'|translate}}</th> 
+      <th>{{'actor.email'|translate}}</th> 
+      <th>{{'actor.phone'|translate}}</th>
+      <th>{{'actor.address'|translate}}</th>
+      <th>{{'actor.role'|translate}}</th> 
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let actor of data">
+      <td>{{actor.name}}</td> 
+      <td>{{actor.surname}}</td>
+      <td>{{actor.email}}</td>
+      <td>{{actor.phone}}</td>
+      <td>{{actor.address}}</td>
+      <td>{{actor.role}}</td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,54 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- details card section starts from here -->
+<!-- En las diapositivas de clase se usa "card-header" y "card-body" pero aquí usamos "card-content" -->
+<section class="details-card">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card-content">
+                    <div class="card-img">
+                        <img src="{{trip.picture}}" alt="">
+                        <!-- <span><h4>{{'trip.title'}}</h4></span> -->
+                    </div>
+                    <div class="card-desc">
+                        <!-- <h3>{{'trip.title'}}</h3> -->
+                        <p>{{trip.description}}</p>
+                        <p>{{trip.price}}€</p>
+                        <!-- Creamos un formulario para poder enviar el comentario a la clase del componente -->
+                        <form class="form-horizontal" (ngSubmit)="onCreated(f)" #f="ngForm">
+                            <div class="form-group input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"> <i class="fa fa-edit"></i> </span>
+                                </div>
+                                <!-- Usamos ngModel para enviar el comentario a la clase del componente -->
+                                <input id="comment" class="form-control" placeholder="{{'application.comment'|translate}}" type="text" 
+                                ngModel name="comment" #comment="ngModel">
+                            </div>  
+                            <!-- Botones de la tarjeta -->
+                            <div class="form-group">      
+                                <button type="submit" class="btn-card">Solicitar Viaje</button>
+                                <button (click)="goBack()" class="btn-card">Volver</button>
+                            </div> 
+                        </form>      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card-content">
+                        <div class="card-img">  
+                            <!-- <span><h4>{{'trip.title'}}</h4></span> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>   
+</section>

@@ -1,0 +1,20 @@
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- En las diapositivas de clase se usa "card-header", "card-body" y "card-footer" pero aquí usamos "card-columns" -->
+<!-- https://getbootstrap.com/docs/4.3/components/card/#card-columns -->
+<div class="card-columns">
+  <div class="card mb-3" *ngFor="let trip of data">
+    <div class="card-img">
+      <img class="card-img-top" src={{trip.picture}} alt="Card image cap">
+      
+        <!-- El botón "Ver detalles" del viaje nos envía al componente TripDisplay -->
+        <h4 routerLink="/trips/TripDisplay/{{trip.id}}" class="btn-card">Ver detalles</h4>
+    </div>
+    <div class="card-body">
+      <!-- Titulo del viaje -->
+      <h5 class="card-title">{{trip.title}}</h5>
+      <p class="card-text"></p>
+      <!-- Descripción del viaje -->
+      <p class="card-text">{{trip.description}}</p>
+    </div>
+  </div>

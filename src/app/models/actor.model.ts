@@ -1,18 +1,19 @@
-import { Entity } from './entity.model';
+import { Entity } from './Entity.model';
+import { Picture } from './picture.model';
 
 export class Actor extends Entity {
+
     name: string;
     surname: string;
-    phone: string;
-    role: string;
     email: string;
     password: string;
     address: string;
-    preferredLanguage = 'es';
+    preferredLanguage: string;
+    phone: string;
+    countrycode: string;
+    photo: string;
+    photoObject: Picture;
+    role: string;
     created: string;
-    validated: boolean;
-
-    constructor() {
-        super();
-    }
+    customToken: string;
 }

@@ -11,7 +11,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
-  roleList =  ['CLERK', 'CONSUMER'];
+  roleList =  ['CLERK', 'EXPLORER'];
   langList = ['en', 'es'];
 
 

@@ -1,0 +1,21 @@
+<table class="table table-striped" >
+  <thead>
+    <tr>
+      <th scope="col">{{'application.place'|translate}}</th>
+      <th scope="col">{{'application.requestusstatus'|translate}}</th>
+      <th scope="col">{{'trip.price'|translate}}</th>    
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let application of data">
+      <td routerLink="/applications/ApplicationDisplay/{{application.id}}">{{application.tripname}}</td>
+      <td routerLink="/applications/ApplicationDisplay/{{application.id}}">{{application.status}}</td>
+      <td routerLink="/applications/ApplicationDisplay/{{application.id}}">{{trips[application.tripid]}}</td>
+      
+      <a routerLink="/Checkout" [queryParams]="{'price':trips[application.tripid]}">
+        <button type="button" class="btn-card">{{'application.Checkout'|translate}}
+        </button>
+      </a>  
+    </tr>
+  </tbody>
+</table>

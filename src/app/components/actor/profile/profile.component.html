@@ -1,0 +1,105 @@
+<legend>{{ 'actor.profile.edit' | translate }}</legend>
+
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+  <div class="form-group has-danger">
+    <input class="form-control" formControlName="id" type="hidden">
+    <input class="form-control" formControlName="role" type="hidden">
+    <input class="form-control" formControlName="email" type="hidden">
+    <input class="form-control" formControlName="password" type="hidden">
+
+    <!-- {{profileForm.get('name').errors}} -->
+    <!-- {{profileForm.get('address').errors}} -->
+
+    <label class="center-block">{{ 'actor.name' | translate }}:
+      <input class="form-control" formControlName="name">
+    </label>
+    <div *ngIf="profileForm.get('name').errors &&
+    profileForm.get('name').touched &&
+    profileForm.get('name').errors.required" class="text-danger">
+      {{ 'errorMessages.validation.required' | translate }}
+    </div>
+    <br/>
+
+
+    <label class="center-block">{{ 'actor.surname' | translate }}:
+      <input class="form-control" formControlName="surname">
+    </label>
+    <div *ngIf="profileForm.get('surname').errors &&
+    profileForm.get('surname').touched &&
+    profileForm.get('surname').errors.required" class="text-danger">
+      {{ 'errorMessages.validation.required' | translate }}
+    </div>
+    <br/>
+
+    <label class="center-block">{{ 'actor.phone' | translate }}:
+      <input class="form-control" formControlName="phone">
+    </label>
+  
+    <div *ngIf="profileForm.get('phone').errors &&
+    profileForm.get('phone').touched &&
+    profileForm.get('phone').errors.pattern" class="text-danger">
+      {{ 'errorMessages.validation.pattern.numeric' | translate }}
+    </div>
+    
+    <div *ngIf="profileForm.get('phone').errors &&
+    profileForm.get('phone').touched &&
+    profileForm.get('phone').errors.phoneNumExists" class="text-danger">
+      {{ 'errorMessages.validation.phone.exists' | translate }}
+    </div>
+    <br/>
+
+    <label class="center-block">{{ 'actor.address' | translate }}:
+      <input class="form-control" formControlName="address" #search size="55">
+    </label>
+    <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="false"
+      (mapClick)="mapClicked($event)">
+      <agm-marker *ngFor="let m of markers; let i = index" [latitude]="m.lat" [longitude]="m.lng" [label]="m.label"
+        [markerDraggable]="m.draggable">
+        <agm-info-window><strong>InfoWindow content</strong></agm-info-window>
+      </agm-marker>
+      <agm-circle [latitude]="lat + 0.3" [longitude]="lng" [radius]="5000" [fillColor]="'red'" [circleDraggable]="true"
+        [editable]="true">
+      </agm-circle>
+    </agm-map>
+   
+    <div *ngIf="profileForm.get('address').errors &&
+    profileForm.get('address').touched &&
+    profileForm.get('address').errors.maxlength" class="text-danger">
+      {{ 'errorMessages.validation.string.maxLength' | translate: {
+      maxvalue: profileForm.get('address').errors.maxlength.requiredLength
+    } }}
+    </div>
+    <div *ngIf="profileForm.get('address').errors" class="text-danger">
+      {{profileForm.get('address').errors}}
+    </div>
+    <div *ngIf="profileForm.get('photo').errors" class="text-danger">
+      {{profileForm.get('photo').errors}}
+    </div>
+    <br/>
+
+    <label class="center-block">{{ 'actor.preferredLanguage' | translate }}:
+      <select class="form-control" formControlName="preferredLanguage">
+        <option *ngFor="let lang of langs" [value]="lang">{{lang}}</option>
+      </select>
+    </label>
+    <br/>
+
+    <label class="center-block">{{ 'actor.photo' | translate }}:
+      <input class="form-control" formControlName="photo" (change)="onFileChange($event)" type="file">
+    </label>
+    <img *ngIf="picture != null" class="card-img-top img-fluid"
+        style=" display: block; object-fit:contain;" src="{{picture}}">
+    <img *ngIf="picture === undefined" class="card-img-top img-fluid"
+        style=" width: 20%; display: block;object-fit:contain;"
+        src="https://moonvillageassociation.org/wp-content/uploads/2018/06/default-profile-picture1.jpg">
+    <textarea id="showresult" hidden="true"></textarea>
+    <br/>
+    <button type="submit" class="btn btn-success" [disabled]="profileForm.invalid">
+      {{ 'messages.save' | translate }}
+    </button>&nbsp;
+
+    <button (click)="goBack()" class="btn btn-primary">
+      {{ 'messages.cancel' | translate }}
+    </button>
+  </div>
+</form>
