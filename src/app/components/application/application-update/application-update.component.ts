@@ -16,13 +16,11 @@ import { TripService } from 'src/app/services/trip.service';
 
 export class ApplicationUpdateComponent extends TranslatableComponent implements OnInit {
 
-  // Array donde almacenamos el listado de aplicaciones para recorrerlo en el html
   data: Application[];
   price: number;
   actorid: string;
-  // Creamos un diccionario vacío, que tendría una estructura como esta: miDiccionario = {'clave1':'valor1','clave2':'valor2'}
   trips = {};
-  statusList = ['Pending', 'Due'];
+  statusList = ['Pending', 'Approved', 'Cancelled', 'Due', 'Rejected'];
   id: string;
   due = 'DUE';
 
@@ -62,16 +60,17 @@ export class ApplicationUpdateComponent extends TranslatableComponent implements
       .catch((err) => console.error(err.message));
   }
 
-  onCreated() {
-    /*this.applicationservice.getApplications()
+  onCreated(data) {
+    this.applicationservice.getApplications();
+    this.applicationservice.updateApplication(data)
     .then((val) => {
-
       val.forEach(val => {
-        this.trips[val.status='Peding']='Due'
+        this.trips[val.statusList='Pending']='Due';
       });
+      console.log("Estoy pasando por este punto");
 
       console.log('Listado de viajes: ' + JSON.stringify(this.trips));
     })
-    .catch((err) => console.error(err.message));*/
+    .catch((err) => console.error(err.message));
   }
 }

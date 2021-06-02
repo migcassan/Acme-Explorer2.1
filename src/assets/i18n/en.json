@@ -132,7 +132,8 @@
         "new.application": "Create a new Application",
         "list.actors": "Actor List",
         "new.manager": "Create Manager Account",
-        "update.application": "Update Request"
+        "update.application": "Update Request",
+        "trip.date": "Starting date: "
     },
         "dashboard": {
         "managed.trips": "Manager Trips",
@@ -156,18 +157,20 @@
             "title": "Title",
             "cancelationMoment": "Cancelation Moment",
             "description": "Description",
-            "price": "Price",
-            "list_requirements": "List_Requirements",
+            "price": "Price: ",
+            "list_requirements": "Requirements: ",
             "status": "Status",
-            "date_start": "Date of Start",
-            "date_end": "Date of End",
+            "date_start": "Start date:",
+            "date_end": "End date:",
             "published": "Published",
             "created": "Created",
             "details": "Details",
             "picture": "Url picture",
             "create.trip": "Trip Creation",
             "started": "Start to create trip",
-            "create.publish" : "Publish"
+            "create.publish" : "Publish",
+            "comment":"Comments",
+            "triphistory": "TRIP HISTORY"
     },
     "application": {
         "ticket":"Ticket",

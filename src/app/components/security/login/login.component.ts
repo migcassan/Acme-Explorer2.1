@@ -29,11 +29,11 @@ export class LoginComponent extends TranslatableComponent implements OnInit {
     const email = form.value.email;
     const password = form.value.password;
     this.authService.login(email, password).then(_ => {
-      window.alert('User logged in sucessfully');
       form.reset();
       this.email = email;
       this.router.navigateByUrl(this.returnUrl);
     }).catch((error) => {
+      console.log(error);
     });
 
   }

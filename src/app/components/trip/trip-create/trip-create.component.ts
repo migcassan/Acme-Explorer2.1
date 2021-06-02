@@ -16,7 +16,7 @@ export class TripCreateComponent extends TranslatableComponent implements OnInit
   registerForm: FormGroup;
   submitted = false;
   // Arrays que indican las opciones que tendrán el combo de status y idioma dentro del formulario de creación de viajes
-  statusList = ['Pending', 'Approved', 'Cancelled'];
+  statusList = ['Pending', 'Approved', 'Cancelled', 'Due', 'Rejected'];
   idiomlist = ['en', 'es'];
 
   constructor(private translateService: TranslateService,
@@ -26,7 +26,6 @@ export class TripCreateComponent extends TranslatableComponent implements OnInit
     super(translateService);
   }
 
-  // Cuando se esté inicializando el componente, lo primero que vamos a hacer es crear el formulario
   ngOnInit() {
     this.registerForm = this.formBuilder.group
       ({
@@ -53,7 +52,6 @@ export class TripCreateComponent extends TranslatableComponent implements OnInit
     this.submitted = true;
     if (this.registerForm.valid) {
       console.log (this.registerForm.value);
-      // El método registerTrip almacena un nuevo viaje dentro del Json Server
       this.tripService.registerTrip(this.registerForm.value)
       .then(res => {
         console.log(res );

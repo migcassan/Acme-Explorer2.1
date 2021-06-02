@@ -170,7 +170,9 @@
             "picture": "Url Foto",
             "create.trip": "Creación viajes",
             "started": "Incie creando un viaje",
-            "create.publish" : "Publicar"
+            "create.publish" : "Publicar",
+            "comment":"Comentarios",
+            "triphistory": "Historial de Viajes"
     },
 
     "application": {

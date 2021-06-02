@@ -13,7 +13,6 @@ import { ActorService } from 'src/app/services/actor.service';
 })
 export class ActorListComponent implements OnInit {
 
-  // Array donde almacenamos el listado de actores para recorrerlo en el html
   data: Actor[];
 
   constructor(private fb: FormBuilder,

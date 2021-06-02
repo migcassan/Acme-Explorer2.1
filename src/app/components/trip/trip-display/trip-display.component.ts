@@ -10,6 +10,9 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { ApplicationService } from 'src/app/services/application.service';
 import { NgForm } from '@angular/forms';
 
+// new
+const MAX_STARS = 5;
+
 @Component({
   selector: 'app-trip-display',
   templateUrl: './trip-display.component.html',
@@ -23,8 +26,16 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
   id: string;
   submitted = false;
   applicationForm: FormGroup;
+  // new var
+  starArray: boolean[];
   // Comentario que recogemos del formulario HTML
-  comment: String = '';
+  comments: String[];
+  actualDate = new Date();
+  data: Application[];
+  //data: Application[];
+  price: number;
+  actorid: string;
+  trips = {};
 
   constructor(private tripservice: TripService,
     private applicationservice: ApplicationService,
@@ -46,6 +57,12 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
       .then((val) => {
         this.trip = val;
         console.log('Trip id:' + this.trip.id);
+        // new
+        // if (this.trip.comments != null) {
+        //   this.applicationservice.getApplications()
+        //   .then((val) => {this.application.id = val; }
+        //   );
+        // }
       })
       .catch((err) => {
         console.error(err);
@@ -57,19 +74,19 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
   onCreated(form: NgForm) {
 
     // Recojo la variable comentario que el usuario ha introducido en el formulario
-    if (form.value.comment) {
-      this.comment = form.value.comment;
+    if (form.value.comments) {
+      this.comments = form.value.comments;
     }
 
     // Aquí creamos la estructura que se guardará dentro del JSON SERVER cuando se guarde una nueva aplicación
     const applicationjson = {
-      ticker: this.trip.ticker, // Rellenamos el ticker de la aplicación a partir de los atributos que tenemos de dicho viaje
+      ticker: this.trip.ticker,
       actorid: this.authService.getCurrentActor().id,
       actorname: this.authService.getCurrentActor().name,
-      tripid: this.trip.id, // Rellenamos el id de la aplicación a partir de los atributos que tenemos de dicho viaje
-      tripname: this.trip.title, // Rellenamos el titulo de la aplicación a partir de los atributos que tenemos de dicho viaje
-      status: this.trip.status, // Rellenamos el status de la aplicación a partir de los atributos que tenemos de dicho viaje
-      comment: this.comment, // Comentario introducido por el usuario a la hora de hacer la aplicación
+      tripid: this.trip.id,
+      tripname: this.trip.title,
+      status: this.trip.status,
+      comments: this.trip.comments,
       reject_reason: '',
       if_paid: '',
       validated: '',
@@ -79,17 +96,57 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
 
     console.log('Application creada: ' + applicationjson);
     this.applicationservice.registerApplication(applicationjson)
-    .then((val) => {
-      // this.trip = val;
-      console.log(val);
-    })
-    .catch((err) => {
-      console.error(err);
-    });
+      .then((val) => {
+        // this.trip = val;
+        console.log(val);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   }
 
   // Este método sirve para navegar hacia atrás en el display de trips, es decir, para tener un botón para volver atrás al listado
-  goBack (): void {
+  goBack(): void {
     this.router.navigate(['/trips']);
   }
+
+  // new method
+  getComments() {
+    return this.trip.comments;
+  }
+  // new method
+  getStarArray(number: number): number[] {
+    let i = 1;
+    const starArray = [];
+    while (i <= MAX_STARS) {
+      starArray.push(i < number);
+      i++;
+    }
+    return starArray;
+  }
+
+  validateDate(date: string): boolean {
+    return ((new Date(date).getTime() - this.actualDate.getTime()) / (1000 * 60 * 60 * 24) > 7);
+  }
+
+  onCancelled() {
+    console.log('This trip has been cancelled');
+  }
+
+  onDelete() {
+    this.tripservice.deleteTrip(this.trip).subscribe(
+      (      res: any) => {
+        alert(res);
+      },
+      (      err: { status: number; }) => {
+        if (err.status === 422) {
+          console.log(err);
+        } else {
+          console.log('Algo salió mal. Por favor, póngase en contacto con el administrador.');
+        }
+      }
+    );
+    setTimeout(() => { location.reload(); }, 1200);
+  }
+
 }

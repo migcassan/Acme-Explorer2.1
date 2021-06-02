@@ -1,8 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  
-  <!-- Foto con el logo de la esquina superior izquierda -->
-  <a class="navbar-brand" routerLink="/home" >
-    <img src="../../../../assets/images/logoAcmeExplorer.png" width="70" height="50" class="d-inline-block align-top" >
+  <a class="navbar-brand" routerLink="/home">
+    <img src="../../../../assets/images/logoAcmeExplorer.png" width="70" height="50" class="d-inline-block align-top">
   </a>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -11,18 +9,23 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <!-- La etiqueta <ul> viene de "unordered list" - lista no ordenada, es decir, crea una lista no ordenada -->
     <ul class="navbar-nav">
-      <!-- La etiqueta <li> viene de "item list" - lista de elementos -->
-      <!-- Creamos la lista 1: "TRIPS" o "VIAJES" -->
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
           {{'header.trips'|translate}}
         </a>
-        <!-- Subelemento de la lista 1: "List Trips" o "Listar Viajes" -->
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" routerLink="/trips">{{'header.list.trips'|translate}}</a>      
+          <a class="dropdown-item" routerLink="/trips">{{'header.list.trips'|translate}}</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        {{'trip.triphistory'|translate}}
+      </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" routerLink="/trip-history">{{'trip.triphistory'|translate}}</a>
         </div>
       </li>
       <!-- Creamos la lista 2: "APPLICATIONS" o "APLICACIONES" de los actores de tipo EXPLORER -->
@@ -31,11 +34,9 @@
           aria-haspopup="true" aria-expanded="false">
           {{'header.applications'|translate}}
         </a>
-        <!-- Subelemento de la lista 2: "List Applications" o "Listar Aplicaciones" de los actores de tipo EXPLORER -->
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" routerLink="/applications">{{'header.list.applications'|translate}}</a>      
+          <a class="dropdown-item" routerLink="/applications">{{'header.list.applications'|translate}}</a>
         </div>
-
       </li>
       <!-- Creamos la lista 2: "APPLICATIONS" o "APLICACIONES" de los actores de tipo MANAGER -->
       <li class="nav-item dropdown" *ngIf="this.authservice.checkRole('Manager')">
@@ -43,12 +44,12 @@
           aria-haspopup="true" aria-expanded="false">
           {{'header.applications'|translate}}
         </a>
-        <!-- Subelementos de la lista 2 para los actores de tipo MANAGER -->
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <!-- "Managed Applications" o "Aplicaciones Administradas" -->
           <a class="dropdown-item" routerLink="/applications">{{'header.application.manager'|translate}}</a>
           <!-- "Update Request" o "Modificar Solicitudes" -->
-          <a class="dropdown-item" routerLink="/ApplicationUpdateComponent">{{'header.update.application'|translate}}</a>
+          <a class="dropdown-item"
+            routerLink="/ApplicationUpdateComponent">{{'header.update.application'|translate}}</a>
         </div>
       </li>
       <!-- Creamos la lista 2: "APPLICATIONS" o "APLICACIONES" de los actores de tipo ADMINISTRATOR -->
@@ -59,10 +60,11 @@
         </a>
         <!-- Subelementos de la lista 2 para los actores de tipo ADMINISTRATOR -->
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-           <!-- "Managed Applications" o "Aplicaciones Administradas" -->
+          <!-- "Managed Applications" o "Aplicaciones Administradas" -->
           <a class="dropdown-item" routerLink="/applications">{{'header.application.manager'|translate}}</a>
           <!-- "Update Request" o "Modificar Solicitudes" -->
-          <a class="dropdown-item" routerLink="/ApplicationUpdateComponent">{{'header.update.application'|translate}}</a>
+          <a class="dropdown-item"
+            routerLink="/ApplicationUpdateComponent">{{'header.update.application'|translate}}</a>
         </div>
       </li>
       <!-- Creamos la lista 3: "PROFILE" o "PERFIL" de los actores de tipo ADMINISTRATOR -->
@@ -74,12 +76,12 @@
         <!-- Editar perfil -->
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" routerLink="/profile">{{'header.edit.profile'|translate}}</a>
-        <div class="dropdown-divider"></div>
-         <!-- Crear un nuevo viaje -->
+          <div class="dropdown-divider"></div>
+          <!-- Crear un nuevo viaje -->
           <a class="dropdown-item" routerLink="/TripCreateComponent">{{'header.new.trip'|translate}}</a>
           <!-- Crear cuenta Manager -->
-           <a class="dropdown-item" routerLink="/RegisterManagerComponent">{{'header.new.manager'|translate}}</a>
-           <!-- Listar actores --> 
+          <a class="dropdown-item" routerLink="/RegisterManagerComponent">{{'header.new.manager'|translate}}</a>
+          <!-- Listar actores -->
           <a class="dropdown-item" routerLink="/ActorListComponent">{{'header.list.actors'|translate}}</a>
         </div>
       </li>
@@ -119,7 +121,7 @@
           <!-- Configurar warehouse -->
           <a class="dropdown-item">{{'header.warehouse'|translate}}</a>
           <!-- Mostrar cubo MCAP -->
-          <a class="dropdown-item">{{'administrator.mcap'|translate}}</a> 
+          <a class="dropdown-item">{{'administrator.mcap'|translate}}</a>
         </div>
       </li>
     </ul>
@@ -151,10 +153,11 @@
       </li>
       <!-- *ngIf indica cuando se tiene que mostrar, en este caso es cuando SI tengamos un actor logueado -->
       <li class="nav-item active" *ngIf="currentActor">
-        <a class="nav-link" style="cursor:pointer" (click)="logout()"> {{'security.logout' | translate}} </a>
+        <a class="nav-link" style="cursor:pointer" (click)="logout()">
+          {{'security.logout' | translate}} </a>
       </li>
-      <li class="nav-item active"> 
-        <a href="#" class="nav-link">
+      <li class="nav-item active" *ngIf="activeRole === 'anonymous' || activeRole === 'Explorer'">
+        <a class="nav-link" routerLink="shopping-cart">
           <span class="fa fa-shopping-cart" aria-hidden="true" style="font: size 1.5em;"></span>
         </a>
       </li>

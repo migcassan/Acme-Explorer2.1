@@ -1,7 +1,6 @@
 import { RouterModule, Routes } from '@angular/router';
 import { RegisterComponent } from './components/security/register/register.component';
 import { ModuleWithProviders } from '@angular/core';
-import { AppComponent } from './app.component';
 import { LoginComponent } from './components/security/login/login.component';
 import { HomeComponent } from './components/shared/home/home.component';
 import { TripListComponent } from './components/trip/trip-list/trip-list.component';
@@ -9,7 +8,6 @@ import { DashboardComponent } from './components/dashboard/dashboard/dashboard.c
 import { ApplicationListComponent } from './components/application/application-list/application-list.component';
 import { ApplicationDisplayComponent } from './components/application/application-display/application-display.component';
 import { TripDisplayComponent } from './components/trip/trip-display/trip-display.component';
-import { TermAndConditionsComponent } from './components/master/terms-and-conditions/term-and-conditions.component';
 import { NotFoundPageComponent } from './components/shared/not-found-page/not-found-page.component';
 import { ActorRoleGuard } from './guards/actor-role.guard';
 import { DeniedAccessPageComponent } from './components/shared/denied-access-page/denied-access-page.component';
@@ -20,6 +18,10 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ActorListComponent } from './components/actor/actor-list/actor-list.component';
 import { RegisterManagerComponent } from './components/security/register-manager/register-manager.component';
 import { ApplicationUpdateComponent } from './components/application/application-update/application-update.component';
+// tslint:disable-next-line:max-line-length
+import { TermAndConditionsComponent } from 'src/app/components/master/terms-and-conditions/term-and-conditions/term-and-conditions.component';
+import { TripHistoryComponent } from './components/trip/trip-history/trip-history.component';
+
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -62,18 +64,22 @@ const appRoutes: Routes = [
 
   {
     path: 'applications', children: [
-      { path: 'ApplicationDisplay/:id', component: ApplicationDisplayComponent, 
+      { path: 'ApplicationDisplay/:id', component: ApplicationDisplayComponent,
       canActivate: [ActorRoleGuard], data: { expectedRole: 'Administrator|Explorer|Manager' }},
 
       { path: '', component: ApplicationListComponent,
-      canActivate: [ActorRoleGuard], data: { expectedRole: 'Explorer|Manager|Administrator' } }
+      canActivate: [ActorRoleGuard], data: { expectedRole: 'Explorer|Manager|Administrator' }},
+
+      { path: 'ApplicationList', component: ApplicationListComponent, 
+      canActivate: [ActorRoleGuard], data: { expectedRole: 'Administrator|Explorer|Manager' }},
+
+      { path: 'ApplicationDisplay', component: ApplicationDisplayComponent,
+      canActivate: [ActorRoleGuard], data: { expectedRole: 'Administrator|Explorer|Manager' }},
+
     ]
   },
-  { path: 'ApplicationList', component: ApplicationListComponent, 
-    canActivate: [ActorRoleGuard], data: { expectedRole: 'Administrator|Explorer|Manager' }},
-
-  { path: 'ApplicationDisplay', component: ApplicationDisplayComponent,
-  canActivate: [ActorRoleGuard], data: { expectedRole: 'Administrator|Explorer|Manager' }},
+  { path: 'trip-history', component: TripHistoryComponent,
+  canActivate: [ActorRoleGuard], data: {expectedRole : 'Explorer|anonymous' }},
 
   { path: 'denied-access', component: DeniedAccessPageComponent },
   { path: 'terms-and-conditions', component: TermAndConditionsComponent },
@@ -82,3 +88,4 @@ const appRoutes: Routes = [
 ];
 
 export const routes: ModuleWithProviders = RouterModule.forRoot(appRoutes, { onSameUrlNavigation: 'reload' });
+export class AppRoutingModule { }

@@ -4,7 +4,6 @@ import { ActorService } from '../../services/actor.service';
 import { AuthService } from 'src/app/services/auth.service';
 
 // Método que comprueba el valor del campo, si existe algún usuario con ese teléfono devuelve un error de mensaje, sino devuelve null
-// Este método necesita que se le pase como parámetro el servicio de Actor ya que es el que hace las llamadas a backend
 export function existingPhoneNumValidator(actorService: ActorService, authService: AuthService): AsyncValidatorFn {
     return (control: AbstractControl): Promise<ValidationErrors | null> | Observable<ValidationErrors | null> => {
         return actorService.getUsersByPhoneNumber(control.value).then(

@@ -1,3 +1,211 @@
-<p>
-  dashboard works!
-</p>
+<div class="container-fluid" >
+  <div class="row">
+      <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+          <div class="tile">
+              <div class="wrapper">
+                  <div class="header">{{'dashboard.managed.trips'|translate}}</div>
+
+                  <div class="banner-img">
+                      <img src="../../../../assets/managed.png" alt="Image 1">
+                  </div>
+
+                  <div class="dates">
+                      <div class="start">
+                          <strong>{{'dashboard.starts'|translate}}</strong> 12:30 JAN 2018
+                          <span></span>
+                      </div>
+                      <div class="ends">
+                          <strong>ENDS</strong> 14:30 JUNE 2019
+                      </div>
+                  </div>
+
+                  <div *ngFor="let warehouse of data" class="stats">
+
+                      <div>
+                          <strong>{{'dashboard.average'|translate}}</strong> {{warehouse.avgTrip}}
+                      </div>
+
+                      <div>
+                          <strong>{{'dashboard.minimum'|translate}}</strong> {{warehouse.minTrip}}
+                      </div>
+
+                      <div>
+                          <strong>{{'dashboard.maximum'|translate}}</strong> {{warehouse.maxTrip}}
+                      </div>
+                      <div>
+                        <strong>'</strong> 
+                    </div>
+
+                      <div>
+                        <strong>{{'dashboard.standard.deviation'|translate}}</strong> {{warehouse.stanDesTip}}
+                    </div>
+
+                  </div>
+
+                  
+              
+              </div>
+          </div> 
+      </div>
+
+      <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+          <div class="tile">
+              <div class="wrapper">
+                  <div class="header">{{'dashboard.requests.trip'|translate}}</div>
+
+                  <div class="banner-img">
+                      <img src="../../../../assets/requests.png" alt="Image 1">
+                  </div>
+
+                  <div class="dates">
+                      <div class="start">
+                          <strong>{{'dashboard.starts'|translate}}</strong> 12:30 JAN 2018
+                          <span></span>
+                      </div>
+                      <div class="ends">
+                          <strong>{{'dashboard.ends'|translate}}</strong> 14:30 JUNE 2019
+                      </div>
+                  </div>
+
+                  <div  *ngFor="let warehouse of data" class="stats" >
+
+                      <div>
+                          <strong>{{'dashboard.average'|translate}}</strong> {{warehouse.avgAp}}
+                      </div>
+
+                      <div>
+                          <strong>{{'dashboard.minimum'|translate}}</strong> {{warehouse.minAp}}
+                      </div>
+
+                      <div>
+                          <strong>{{'dashboard.maximum'|translate}}</strong> {{warehouse.minPrice}}
+                      </div>
+
+                      <div>
+                        <strong>'</strong> 
+                    </div>
+
+                      <div>
+                        <strong>{{'dashboard.standard.deviation'|translate}}</strong> {{warehouse.stanDesAp}}
+                    </div>
+
+                  </div>
+
+                  
+
+                  
+
+                  
+              </div>
+          </div> 
+      </div>
+
+      <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+          <div  class="tile">
+              <div class="wrapper">
+                  <div class="header">{{'dashboard.trips.prices'|translate}}</div>
+
+                  <div class="banner-img">
+                      <img src="../../../../assets/prices.png" alt="Image 1">
+                  </div>
+
+                  <div class="dates">
+                      <div class="start">
+                          <strong>{{'dashboard.starts'|translate}}</strong> 12:30 JAN 2018
+                          <span></span>
+                      </div>
+                      <div class="ends">
+                          <strong>{{'dashboard.ends'|translate}}</strong> 14:30 JUNE 2019
+                      </div>
+                  </div>
+
+                  
+
+                  
+
+                  <div *ngFor="let warehouse of data" class="stats">
+
+                      <div>
+                          <strong>{{'dashboard.average'|translate}}</strong> {{warehouse.avgPrice}}
+                      </div>
+
+                      <div>
+                          <strong>{{'dashboard.minimum'|translate}}</strong> {{warehouse.minPrice}}
+                      </div>
+
+                      <div>
+                          <strong>{{'dashboard.maximum'|translate}}</strong> {{warehouse.maxPrice}}
+                      </div>
+
+                      <div>
+                        <strong>'</strong> 
+                    </div>
+
+                      <div>
+                        <strong>{{'dashboard.standard.deviation'|translate}}</strong> {{warehouse.stanDesPrice}}
+                    </div>
+
+                  </div>
+
+                 
+              </div>
+          </div> 
+      </div>
+
+      <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+          <div class="tile">
+              <div class="wrapper">
+                  <div class="header">{{'dashboard.ratio.app'|translate}}</div>
+
+                  <div class="banner-img">
+                      <img src="../../../../assets/ratio.png" alt="Image 1">
+                  </div>
+
+                  <div class="dates">
+                      <div class="start">
+                          <strong>{{'dashboard.starts'|translate}}</strong> 12:30 JAN 2018  
+                          <span></span>
+                      </div>
+                      <div class="ends">
+                          <strong>{{'dashboard.ends'|translate}}</strong> 14:30 JUNE 2019
+                      </div>
+                  </div>
+
+                  <div *ngFor="let warehouse of data" class="stats2">
+
+                      <div>
+                          <strong>{{'dashboard.status'|translate}}</strong> {{warehouse.status1}}
+                      </div>
+
+                      <div>
+                          <strong>{{'dashboard.ratio'|translate}}</strong> {{warehouse.ratio1}}
+                      </div>
+
+                  </div>
+                  <div *ngFor="let warehouse of data" class="stats2">
+
+                      <div>
+                          {{warehouse.status2}}
+                      </div>
+
+                      <div>
+                          {{warehouse.ratio2}}
+                      </div>
+                  </div>
+                  <div *ngFor="let warehouse of data" class="stats2">
+
+                      <div>
+                           {{warehouse.status3}}
+                      </div>
+
+                      <div>
+                           {{warehouse.ratio3}}
+                      </div>
+                  </div>
+                  
+
+              </div>
+          </div> 
+      </div>
+  </div>
+</div>

@@ -15,7 +15,7 @@ const httpOptions = {
 })
 export class TripService {
 
-  private currentTrip: Trip;
+  trip: Trip;
   private tripUrl = `${environment.apiBaseUrl + '/trips'}`;
 
   constructor(private http: HttpClient, private messageService: MessageService, private cookieService: CookieService) { }
@@ -55,4 +55,34 @@ export class TripService {
 
     });
   }
+
+  // new method
+  getStars(it: Trip): number{
+    let accum = 0;
+    const l = it.comments == null? 0 : it.comments.length;
+    if (l !==0) {
+      it.comments.filter(com => com.stars !== undefined)
+      .forEach(com => {accum += com.stars / l;});
+    }
+    return accum;
+  }
+
+  deleteTrip(trip: Trip) {
+    return new Promise<any>((resolve, reject) => {
+      const headers = new HttpHeaders();
+      headers.append('Content-Type', 'application/json');
+      const url = `${this.tripUrl}/${trip.id}`; // http://localhost:3000/trips/id
+      this.http.delete(url, httpOptions).toPromise()
+        .then(res => {
+          this.messageService.notifyMessage('trip deleted', 'alert alert-danger');
+          resolve(res);
+        }, err => {
+          this.messageService.notifyMessage('unable to delete trip', 'alert alert-danger');
+          reject(err);
+        });
+
+    });
+  }
+
+
 }

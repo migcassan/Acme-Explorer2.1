@@ -25,47 +25,36 @@ declare var google: any;
 })
 export class ProfileComponent extends TranslatableComponent implements OnInit, CanComponentDeactivate {
 
-  // Creamos un atributo que va a ser el propio formulario (un grupo de campos formulario)
   profileForm: FormGroup;
   formModel: Actor;
   actor: Actor;
-  // Array que indica las opciones que tendrá el combo del lenguaje dentro del formulario de edición de perfil
   langs = ['en', 'es'];
   photoChanged: Boolean;
-  // Este atributo es la propia imagen
   picture: string;
-  // Nivel de zoom de Google maps
   zoom = 10;
-  // Posición inicial en el mapa
   lat = 37.3753501;
   lng = -6.0250983;
   markers: marker[] = [];
   autocomplete: any;
 
-  // can deactivate
-  // Booleano que determina cuando el componente ha sido actualizado
   private updated: boolean;
-  // Booleano que determina cuando hemos cancelado los cambios
   private cancelChanges = false;
 
   @ViewChild('search')
   public searchElementRef: ElementRef;
 
-  // Para poder construir el formulario necesitamos el FormBuilder
   constructor(private formBuilder: FormBuilder,
     private router: Router,
     private authService: AuthService,
     private actorService: ActorService,
     private translateService: TranslateService,
     private mapsAPILoader: MapsAPILoader,
-    private NgZone: NgZone) {
+    private ngZone: NgZone) {
     super(translateService);
     this.updated = false;
   }
 
-  // Cuando se esté inicializando el componente, lo primero que vamos a hacer es crear el formulario
   ngOnInit() {
-    // photoChanged es un boleano que nos sirve para saber si el usuario ha cambiado la foto que estaba o no
     this.photoChanged = false;
     this.createForm();
 
@@ -75,7 +64,7 @@ export class ProfileComponent extends TranslatableComponent implements OnInit, C
         types: ['address']
       });
       this.autocomplete.addListener('place_changed', () => {
-        this.NgZone.run(() => {
+        this.ngZone.run(() => {
           const place = this.autocomplete.getPlace();
 
           this.profileForm.value.address = place.formatted_address;
@@ -100,22 +89,19 @@ export class ProfileComponent extends TranslatableComponent implements OnInit, C
   }
 
   // Método donde creamos el formulario, es decir donde definimos los campos de los que consta el formulario creando un grupo con "group"
-  // El formulario se crea inicialmente vacío hasta que cargamos el actor y se indica los validadores
   createForm() {
     this.profileForm = this.formBuilder.group
     ({
       id: [''],
-      name: ['', Validators.required], // valor requerido
-      surname: ['', Validators.required], // valor requerido
+      name: ['', Validators.required],
+      surname: ['', Validators.required],
       email: [''],
       password: [''],
-      // usamos el patrón para solamente aceptar dígitos numéricos
-      // además de eso tengo otro validador asíncrono para mirar en base de datos que no tenga otro usuario con el mismo teléfono
       phone: ['', [Validators.pattern('[0-9]+')], [existingPhoneNumValidator(this.actorService, this.authService)]],
-      address: ['', Validators.maxLength(50)], // máximo 50 caracteres
+      address: ['', Validators.maxLength(50)],
       preferredLanguage: [''],
-      photo: [''], // El campo photo ahora será un selector de fichero (botón examinar)
-      // ValidateURLOptional],  Aquí utilizaremos un validador definido por nosotros (custom) - deprecated
+      photo: [''],
+      // ValidateURLOptional],
       picture: [''],
       role: ['']
     });
@@ -137,17 +123,14 @@ export class ProfileComponent extends TranslatableComponent implements OnInit, C
           this.profileForm.controls['preferredLanguage'].setValue(actor.preferredLanguage);
           this.profileForm.controls['role'].setValue(actor.role);
           this.profileForm.controls['address'].setValue(actor.address);
-          // Si el actor tiene una imagen, esa tengo que cargarla al inicial el formulario
-          // Buffer es el array de bits de la imagen que se guarda en JSON Server
           console.log('photo: ', actor.photoObject);
           if (actor.photoObject != undefined) { // Para que no salte el error cuando no está creada la estructura
             this.picture = actor.photoObject.Buffer;
-            // Cargamos en un textarea que inicialmente está oculto, el array de bits de la imagen
             document.getElementById('showresult').textContent = actor.photoObject.Buffer;
             this.formModel = this.profileForm.value;
             this.formModel.photoObject = new Picture ();
             this.formModel.photoObject.Buffer = document.getElementById('showresult').textContent;
-            this.formModel.photoObject.contentType = 'image/png'; // Por ahora solo aceptamos imagenes de tipo .png
+            this.formModel.photoObject.contentType = 'image/png';
           }
           if (this.actor.address == null) {
             this.setCurrentPosition();
@@ -238,16 +221,11 @@ export class ProfileComponent extends TranslatableComponent implements OnInit, C
 // Método genérico que cada componente lo tiene que customizar
 canDeactivate (): Observable <boolean> | Promise <boolean> | boolean {
   console.log('Estoy dentro de canDeactivate');
-  // Por defecto devolvemos siempre falso
   let result = false;
-  // Mensaje internacionalizado con una ventana emergente
   const message = this.translateService.instant('messages.discard.changes');
-  // Si el componente aún no ha sido actualizado, y el formulario está sucio (se ha modificado)
   if (!this.updated && this.profileForm.dirty) {
-    // Muestro la ventana emergente
     result = confirm(message);
     if (!result) {
-      // Si result = false significa que el usuario ha pinchado en cancelar dentro de la ventana emergente
       console.log('Cancelar');
      this.cancelChanges = true;
     }
@@ -258,7 +236,7 @@ canDeactivate (): Observable <boolean> | Promise <boolean> | boolean {
 
 // Este método se ejecuta al pinchar en el botón cancelar del html y lo que hacemos es evaluar el resultado del canDeactivate anterior
 goBack(): void {
-  var result = this.canDeactivate();
+  const result = this.canDeactivate();
   console.log(result);
   if (result) {
     console.log('Has pinchado en Aceptar la cancelación');

@@ -28,7 +28,7 @@ import { LocalizedDataPipe } from './components/shared/localized-data.pipe';
 import { DashboardComponent } from './components/dashboard/dashboard/dashboard.component';
 import { ApplicationListComponent } from './components/application/application-list/application-list.component';
 import { ApplicationDisplayComponent } from './components/application/application-display/application-display.component';
-import { TermAndConditionsComponent } from './components/master/terms-and-conditions/term-and-conditions.component';
+import { TermAndConditionsComponent } from './components/master/terms-and-conditions/term-and-conditions/term-and-conditions.component';
 import { NotFoundPageComponent } from './components/shared/not-found-page/not-found-page.component';
 import { HttpModule } from '@angular/http';
 import { DeniedAccessPageComponent } from './components/shared/denied-access-page/denied-access-page.component';
@@ -38,12 +38,11 @@ import { TripCreateComponent } from './components/trip/trip-create/trip-create.c
 import { AgmCoreModule} from '@agm/core';
 import { CookieService } from 'ngx-cookie-service';
 import { SearchTripComponent } from './components/search-trip/search-trip.component';
-//import { CheckoutComponent } from './components/checkout/checkout.component';
-//import { NgxPayPalModule } from 'ngx-paypal';
-//import { RegisterManagerComponent } from './components/security/register-manager/register-manager.component';
+import { NgxPayPalModule } from 'ngx-paypal';
 import { ApplicationUpdateComponent } from './components/application/application-update/application-update.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { RegisterManagerComponent } from './components/security/register-manager/register-manager.component';
+import { TripHistoryComponent } from './components/trip/trip-history/trip-history.component';
 
 // Initialize firebase
 export const firebaseConfig = {
@@ -87,22 +86,23 @@ export function HttpLoaderFactory(http: HttpClient) {
     ProfileComponent,
     TripCreateComponent,
     SearchTripComponent,
-    //CheckoutComponent,
-    //RegisterManagerComponent,
+    CheckoutComponent,
     ApplicationUpdateComponent,
     CheckoutComponent,
     RegisterManagerComponent,
-    TripEditComponent
+    TripEditComponent,
+    TripHistoryComponent
 
   ],
   imports: [
     routes,
+    // tslint:disable-next-line: deprecation
     HttpModule,
     BrowserModule,
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    //NgxPayPalModule,
+    NgxPayPalModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyC4ay9WI4sdQEmDnjdnjAKx56_l_vVEqsw',
       libraries: ['places']
@@ -114,7 +114,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
-    })
+    }),
   ],
   providers: [AngularFireAuth, MessageService, AngularFireAuth, ActorService, CookieService],
   bootstrap: [AppComponent]

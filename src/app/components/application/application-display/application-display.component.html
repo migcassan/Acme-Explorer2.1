@@ -1,3 +1,54 @@
-<p>
-  application-display works!
-</p>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<!-- details card section starts from here -->
+<section class="details-card">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card-content">
+                    <div class="card-img">
+
+                        <!-- <span><h4>{{'trip.title'}}</h4></span> -->
+                    </div>
+                    <div class="card-desc">
+                        <!--      <h3>{{'trip.title'}}</h3> -->
+
+                        <p>{{application.tripname}}</p>
+
+                        <p>{{application.status}}</p>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card-content">
+                        <div class="card-img">
+                        </div>
+                        <div class="card-desc">
+                            <textarea name="comments" id="comments" style="font-family:sans-serif;font-size:1.2em;">
+                                        Commentarios!
+                                        </textarea>
+                        </div>
+
+                        <input type="submit" value="Submit">
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</section>
+<!-- details card section starts from here -->

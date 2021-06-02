@@ -46,8 +46,8 @@ export class ApplicationService {
   }
 
   // Método que actualiza el estado de una application. ApplicationUpdateComponent sería el componente que tendría que llamar a este método
-  updateApplication (application: any) {
-    const url = `${this.applicationUrl}/${application.id}`;
+  updateApplication (application: Application) {
+    const url = `${this.applicationUrl}/${application}`;
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
     const body = JSON.stringify(application);

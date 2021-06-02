@@ -6,8 +6,8 @@ export class Application extends Entity {
     actorname: String;
     tripid: String;
     tripname: String;
-    status: String;
-    comment: String;
+    status: String[];
+    comments: String[];
     reject_reason: String;
     if_paid: Boolean;
     validated: Boolean;

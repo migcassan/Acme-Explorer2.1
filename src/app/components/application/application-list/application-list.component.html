@@ -3,7 +3,8 @@
     <tr>
       <th scope="col">{{'application.place'|translate}}</th>
       <th scope="col">{{'application.requestusstatus'|translate}}</th>
-      <th scope="col">{{'trip.price'|translate}}</th>    
+      <th scope="col">{{'trip.price'|translate}}</th>  
+      <th scope="col">{{'trip.comment'|translate}}</th> 
     </tr>
   </thead>
   <tbody>
@@ -11,6 +12,7 @@
       <td routerLink="/applications/ApplicationDisplay/{{application.id}}">{{application.tripname}}</td>
       <td routerLink="/applications/ApplicationDisplay/{{application.id}}">{{application.status}}</td>
       <td routerLink="/applications/ApplicationDisplay/{{application.id}}">{{trips[application.tripid]}}</td>
+      <td routerLink="/applications/ApplicationDisplay/{{application.id}}">{{application.comments}}</td>
       
       <a routerLink="/Checkout" [queryParams]="{'price':trips[application.tripid]}">
         <button type="button" class="btn-card">{{'application.Checkout'|translate}}

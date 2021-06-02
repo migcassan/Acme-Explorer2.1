@@ -13,14 +13,11 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class RegisterManagerComponent extends TranslatableComponent implements OnInit {
 
-  // Creamos un atributo que va a ser el propio formulario (un grupo de campos formulario)
   registerForm: FormGroup;
   submitted = false;
-  // Arrays que indican las opciones que tendrán el combo del rol y idioma dentro del formulario de creación de manager
   roleList = ['Manager'];
   idiomlist = ['en', 'es'];
 
-  // Para poder construir el formulario necesitamos el FormBuilder
   constructor(private formBuilder: FormBuilder,
     private translateService: TranslateService,
     private authService: AuthService,
@@ -28,8 +25,6 @@ export class RegisterManagerComponent extends TranslatableComponent implements O
     super(translateService);
   }
 
-  // Cuando se esté inicializando el componente, lo primero que vamos a hacer es crear el formulario
-  // A diferencia del formulario del Profile, en este caso no necesitamos rellenar el valor de los campos con el actor
   ngOnInit() {
     this.registerForm = this.formBuilder.group
       ({
@@ -50,7 +45,6 @@ export class RegisterManagerComponent extends TranslatableComponent implements O
     this.submitted = true;
     if (this.registerForm.valid) {
       console.log (this.registerForm.value);
-      // El método registerUser almacena un nuevo usuario dentro del Json Server
       this.authService.registerUser(this.registerForm.value)
       .then(res => {
         console.log(res );

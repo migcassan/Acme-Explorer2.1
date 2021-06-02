@@ -2,53 +2,90 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-<!-- details card section starts from here -->
-<!-- En las diapositivas de clase se usa "card-header" y "card-body" pero aquí usamos "card-content" -->
-<section class="details-card">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card-content">
-                    <div class="card-img">
-                        <img src="{{trip.picture}}" alt="">
-                        <!-- <span><h4>{{'trip.title'}}</h4></span> -->
-                    </div>
-                    <div class="card-desc">
-                        <!-- <h3>{{'trip.title'}}</h3> -->
-                        <p>{{trip.description}}</p>
-                        <p>{{trip.price}}€</p>
-                        <!-- Creamos un formulario para poder enviar el comentario a la clase del componente -->
-                        <form class="form-horizontal" (ngSubmit)="onCreated(f)" #f="ngForm">
-                            <div class="form-group input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"> <i class="fa fa-edit"></i> </span>
-                                </div>
-                                <!-- Usamos ngModel para enviar el comentario a la clase del componente -->
-                                <input id="comment" class="form-control" placeholder="{{'application.comment'|translate}}" type="text" 
-                                ngModel name="comment" #comment="ngModel">
-                            </div>  
-                            <!-- Botones de la tarjeta -->
-                            <div class="form-group">      
-                                <button type="submit" class="btn-card">Solicitar Viaje</button>
-                                <button (click)="goBack()" class="btn-card">Volver</button>
-                            </div> 
-                        </form>      
-                    </div>
+<section>
+    <div class="container py-4 my-4 mx-auto d-flex flex-column">
+        <div class="header">
+            <div class="row r1">
+                <div class="col-md-9 abc">
+                    <h1>{{trip.title}}</h1>
+                    <br>
                 </div>
+                <div class="col-md-3 text-right pqr">
+                    <span *ngFor="let i of getStarArray(trip.comments)">
+                        <span *ngIf="i == 1" class="fa fa-star checked"></span>
+                        <span *ngIf="i == 0" class="fa fa-star"></span>
+                    </span>
+                </div>
+                <p class="text-right para"><span>{{trip.description}}</span></p>
+                <br>
             </div>
         </div>
-    </div>
-    <div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card-content">
-                        <div class="card-img">  
-                            <!-- <span><h4>{{'trip.title'}}</h4></span> -->
+        <div class="container-body mt-4">
+            <div class="row r3">
+                <div class="col-md-5 p-0 klo">
+                    <ul>
+                        <li><span>{{'trip.price' | translate}}</span>
+                            <p>{{trip.price}}€</p>
+                        </li>
+                        <li><span>{{'trip.list_requirements' | translate}} {{trip.list_requirements}}</span></li> <br>
+                        <li> <b>
+                                <p>{{'trip.date_start'| translate}} {{trip.date_start}} </p>
+                            </b> </li>
+                        <li> <b>
+                                <p>{{'trip.date_end'| translate}} {{trip.date_end}} </p>
+                            </b> </li>
+                    </ul>
+                </div>
+                <div class="col-md-7"> <img src="{{trip.picture}}" width="90%" height="95%"> </div>
+            </div>
+        </div>
+        <div class="footer d-flex flex-column mt-5">
+            <div class="row r4">
+
+                <form class="form-horizontal" (ngSubmit)="onCreated(f)" #f="ngForm">
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-edit"></i> </span>
                         </div>
+                        <!-- Usamos ngModel para enviar el comentario a la clase del componente -->
+                        <input id="comment" class="form-control" placeholder="{{'application.comment'|translate}}"
+                            type="text" ngModel name="comment" #comment="ngModel">
                     </div>
-                </div>
+
+                    <div class="card-desc">
+                        <p class="card-text">{{trip.comments}}</p>
+                    </div>
+                    <!-- Botones de la tarjeta -->
+                    <!--   <div class="form-group">      
+                    <button type="submit" class="btn-card">Solicitar Viaje</button>
+                    <button (click)="goBack()" class="btn-card">Volver</button>
+                </div> -->
+
+                    <div class="form-group">
+                        <a routerLink="/Checkout" [queryParams]="{'price':trips[application.tripid]}">
+                            <button type="submit" class="btn btn-outline-warning">BUY NOW</button>
+                        </a>
+                        <button (click)="goBack()" class="btn btn-outline-warning">Volver</button>
+                    </div>
+
+                    <div class="card-body">
+                        <button class="float-right fa fa-trash-o mt-1 mr-1" (click)="onDelete()"></button>
+                    </div>
+                </form>
             </div>
         </div>
-    </div>   
-</section>
+
+        <div *ngIf="(validateDate(trip.date_start))">
+            <button class="btn btn-outline-primary" [disabled]="trip.isCancelled" type="button" class="buttons"
+                [disabled]="!trip.published" routerLink="/trips/{{trip.id}}">
+                <button>edit</button>
+            </button>
+            <button type="button" class="btn btn-outline-primary">Primary</button>
+            <button color="warn" [disabled]="(trip.cancelled)" type="button" class="buttons"
+                (click)="onCancel(trip, i)">
+                <i class="bi bi-bucket">clear</i>
+            </button>
+        </div>
+
+
+    </div>

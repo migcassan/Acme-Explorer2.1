@@ -6,13 +6,15 @@ export class Trip extends Entity{
     cancelled_reason: String;
     title: String;
     cancelationMoment: String;
+    cancelled: boolean;
     description: String;
     price: Number;
     picture: String;
     list_requirements: String [];
+    comments: String [];
     status: String;
-    date_start: Date;
-    date_end: Date;
+    date_start: string;
+    date_end: string;
     published: Boolean;
     created: Date;
 }

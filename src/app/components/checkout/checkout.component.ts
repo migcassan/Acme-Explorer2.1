@@ -20,7 +20,7 @@ export class CheckoutComponent extends TranslatableComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router) {
     super(translateService);
-    }
+  }
 
   ngOnInit() {
     this.initConfig();
@@ -28,13 +28,13 @@ export class CheckoutComponent extends TranslatableComponent implements OnInit {
 
   initConfig() {
     const total = this.route.snapshot.queryParams['price'];
-    console.log (total);
-    this.payPalConfig = new PayPalConfig ({
+    console.log(total);
+    this.payPalConfig = new PayPalConfig({
       currency: 'EUR',
-      clientId: 'AcYYvVQ9rTjnGhWhhzXq7kE-ap-5H3X7N6_R1mLs40KrQ6bXNLSkOsOf90g7pOaA1ADns_n5eJvBhDm0',
-      createOrder: (data) => < ICreateOrderRequest > {
+      clientId: 'AbOhvg8FostBeIMayKwhHDJKPpO46DOdGJ4QXcF3I05W8lhHb3ym-B1ZLB3k7_v4fkCa41BsxAPDpJbQ',
+      createOrder: (data) => <ICreateOrderRequest>{
         intent: 'CAPTURE',
-        purchase_units: [ {
+        purchase_units: [{
           amount: {
             currency_code: 'EUR',
             value: total,
@@ -52,9 +52,9 @@ export class CheckoutComponent extends TranslatableComponent implements OnInit {
       },
 
       onApprove: (data, actions) => {
-        console.log ('Transaction was approved, but not authorized yet', data, actions);
+        console.log('Transaction was approved, but not authorized yet', data, actions);
         actions.order.get().then(details => {
-          console.log ('Order details:', details);
+          console.log('Order details:', details);
         });
       },
 
@@ -63,14 +63,18 @@ export class CheckoutComponent extends TranslatableComponent implements OnInit {
         this.router.navigateByUrl('/trips');
       },
       onCancel: (data, actions) => {
-        console.log ('OnCancel', data, actions);
+        console.log('OnCancel', data, actions);
       },
       onError: err => {
-        console.log ('OnError', err);
+        console.log('OnError', err);
       },
       onClick: () => {
         console.log('onClick');
       },
     });
+  }
+
+  goBack(): void {
+    this.router.navigate(['/trips']);
   }
 }
